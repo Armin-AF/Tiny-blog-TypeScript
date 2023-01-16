@@ -1,31 +1,23 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import Post from "../Post";
 
-interface Post {
-    id: number;
-    title: string;
-    body: string;
-    tags: string[];
+interface MyBlogProps {
+    onPosts: (data: Post[]) => void;
 }
 
-const MyBlog: React.FC = () => {
+const MyBlog: React.FC<MyBlogProps> = ({onPosts}) => {
     const [posts, setPosts] = useState<Post[]>([]);
-    const [error, setError] = useState('');
 
     useEffect(() => {
         axios
-            .get('https://dummyjson.com/posts')
-            .then(response => {
-                setPosts(response.data);
+            .get("https://dummyjson.com/posts")
+            .then(res => {
+                setPosts(res.data);
+                onPosts(res.data);
             })
-            .catch(error => {
-                setError(error.message);
-            });
+            .catch(err => console.log(err));
     }, []);
-
-    if (error) {
-        return <p>{error}</p>;
-    }
 
     return (
         <div>
