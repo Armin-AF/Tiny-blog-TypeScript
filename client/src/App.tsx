@@ -12,8 +12,24 @@ const App: React.FC = () => {
         data.forEach(post => {
             tags = [...tags, ...post.tags.filter(tag => !tags.includes(tag))];
         });
-        setTags(tags);
+
+        const tagCount = tags.reduce((allTags: { [key: string]: number }, tag) => {
+            if (tag in allTags) {
+                allTags[tag]++;
+            } else {
+                allTags[tag] = 1;
+            }
+            return allTags;
+        }, {});
+
+        const topFiveTags = Object.keys(tagCount)
+            .sort((a, b) => tagCount[b] - tagCount[a])
+            .slice(0, 5)
+            .map(tag => ({ tag, count: tagCount[tag] }))
+            .map(tagObject => tagObject.tag);
+        setTags(topFiveTags);
     };
+
 
     return (
         <div>
