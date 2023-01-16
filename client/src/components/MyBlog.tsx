@@ -13,11 +13,11 @@ const MyBlog: React.FC<MyBlogProps> = ({onPosts}) => {
         axios
             .get("https://dummyjson.com/posts")
             .then(res => {
-                setPosts(res.data);
-                onPosts(res.data);
+                setPosts(res.data.posts);
+                onPosts(res.data.posts);
             })
             .catch(err => console.log(err));
-    }, []);
+    }, [onPosts]);
 
     return (
         <div>
@@ -26,8 +26,8 @@ const MyBlog: React.FC<MyBlogProps> = ({onPosts}) => {
                     <h2>{post.title}</h2>
                     <p>{post.body}</p>
                     <div>
-                        {post.tags.map(tag => (
-                            <span key={tag}>{tag}</span>
+                        {post.tags.map((tag, index) => (
+                            <span key={index}>{tag}</span>
                         ))}
                     </div>
                 </div>
