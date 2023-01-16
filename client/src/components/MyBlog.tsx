@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import Post from "../Post";
+import './MyBlog.css';
 
 interface MyBlogProps {
     onPosts: (data: Post[]) => void;
@@ -22,10 +23,10 @@ const MyBlog: React.FC<MyBlogProps> = ({onPosts}) => {
     return (
         <div>
             {posts.map(post => (
-                <div key={post.id}>
+                <div className="post-card" key={post.id}>
                     <h2>{post.title}</h2>
                     <p>{post.body}</p>
-                    <div>
+                    <div className="tags">
                         {post.tags.map((tag, index) => (
                             <span key={index}>{tag}</span>
                         ))}
