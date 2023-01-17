@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import Post from "../Post";
+import './MyBlog.css';
 
 interface SectionProps {
     tag: string;
