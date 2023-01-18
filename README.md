@@ -20,19 +20,19 @@ These instructions will get you a copy of the project up and running on your loc
 ## Installation
 - Clone the repository
 
-```js
+```shell
 git clone https://github.com/Armin-AF/Tiny-blog-TypeScript.git
 ```
 
 - Install the dependencies
 
-```js
+```shell
 npm install
 ```
 
 - Run the development server
 
-```js
+```shell
 npm start
 ```
 
