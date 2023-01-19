@@ -37,24 +37,6 @@ const App: React.FC = () => {
             <MyBlog onPosts={handlePosts} />
             {tags.map(tag => (
                 <Section key={tag} tag={tag} posts={posts} />
-                /*<section className="section" key={tag}>
-                    <h3>{tag}</h3>
-                    <select className="section-content">
-                        <option value="show">Show</option>
-                        <option value="hide">Hide</option>
-                    </select>
-                    {posts.filter(post => post.tags.includes(tag)).map(post => (
-                        <div className="post-card" key={post.id}>
-                            <h2>{post.title}</h2>
-                            <p>{post.body}</p>
-                            <div className="tags">
-                                {post.tags.map((tag, index) => (
-                                    <span key={index}>{tag}</span>
-                                ))}
-                            </div>
-                        </div>
-                    ))}
-                </section>*/
             ))}
         </div>
     );
